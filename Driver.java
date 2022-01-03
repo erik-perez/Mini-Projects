@@ -1,7 +1,30 @@
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
+import java.util.stream.Collectors;
 public class Driver {
 
     public static void main(String[] args) {
+        
+        List<Integer> values = new ArrayList<>();
+        values.add(3);
+        values.add(2);
+        values.add(17);
+        values.add(6);
+        values.add(8);
+        values.add(3);
+        values.add(2);
+        values.add(-17);
+        values.add(-6);
+        values.add(8);
+
+
+        values.stream().filter(value -> value % 2 == 0).forEach(value -> System.out.println(value));
+        ArrayList<Integer> positives = values.stream().filter(value -> value > 0).collect(Collectors.toCollection(ArrayList::new));
+        positives.stream().forEach(value -> System.out.println(value));
+        long howManyNumbers = values.stream().filter(i -> i < 4).map(i -> i * 2).filter(i -> i > 10).count();
+
+        System.out.println("Numbers: " + howManyNumbers);
 
         int[][] results = 	{{39, 40, 17, 35, 42, 6}, {40, 41, 27, 41, 42, 36}, {40, 41, 27, 41, 42, 36}};
         compareAndRankThreeTeams(results);
